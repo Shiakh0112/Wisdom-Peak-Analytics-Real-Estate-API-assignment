@@ -175,7 +175,7 @@ x-auth-token: <JWT_TOKEN>
 ---
 
 ### 5. Upload Images
-**Endpoint:** `POST /upload/images`  
+**Endpoint:** `POST /upload`  
 
 **Request:** (multipart/form-data)  
 - images: [select up to 4 image files]  
