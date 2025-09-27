@@ -50,193 +50,7 @@ x-auth-token: <JWT_TOKEN>
 ---
 
 ## API Endpoints
-
-### 1. User Registration
-**Endpoint:** `POST /auth/register`  
-
-**Request:**
-```json
-{
-    "name": "John Doe",
-    "email": "john@example.com",
-    "password": "password123"
-}
-```
-
-**Response (201):**
-```json
-{
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
-    "user": {
-        "id": "638d1f7a9e8b9a0b1c8d4e5f",
-        "name": "John Doe",
-        "email": "john@example.com",
-        "createdAt": "2022-12-05T10:30:18.123Z"
-    }
-}
-```
-
----
-
-### 2. User Login
-**Endpoint:** `POST /auth/login`  
-
-**Request:**
-```json
-{
-    "email": "john@example.com",
-    "password": "password123"
-}
-```
-
-**Response (200):**
-```json
-{
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
-    "user": {
-        "id": "638d1f7a9e8b9a0b1c8d4e5f",
-        "name": "John Doe",
-        "email": "john@example.com",
-        "createdAt": "2022-12-05T10:30:18.123Z"
-    }
-}
-```
-
----
-
-### 3. Create Property (Without Images)
-**Endpoint:** `POST /properties`  
-
-**Request:**
-```json
-{
-    "title": "Luxury Apartment in Gurgaon",
-    "location": "Gurgaon",
-    "price": 15000000,
-    "bhk": 3,
-    "type": "Apartment",
-    "description": "A luxurious 3BHK apartment in the heart of Gurgaon with modern amenities.",
-    "status": "sale",
-    "images": []
-}
-```
-
-**Response (201):**
-```json
-{
-    "_id": "638d2a1b9e8b9a0b1c8d4e6a",
-    "title": "Luxury Apartment in Gurgaon",
-    "location": "Gurgaon",
-    "price": 15000000,
-    "bhk": 3,
-    "type": "Apartment",
-    "description": "A luxurious 3BHK apartment in the heart of Gurgaon with modern amenities.",
-    "status": "sale",
-    "images": [],
-    "date": "2022-12-05T11:15:23.456Z",
-    "owner": "638d1f7a9e8b9a0b1c8d4e5f"
-}
-```
-
----
-
-### 4. Create Property with Images (Single Request)
-**Endpoint:** `POST /properties-with-images`  
-
-**Request:** (multipart/form-data)  
-- title: "Modern Villa in Mumbai"  
-- location: "Mumbai"  
-- price: "35000000"  
-- bhk: "5"  
-- type: "Villa"  
-- description: "A modern 5BHK villa with a private pool and stunning city views."  
-- status: "sale"  
-- images: [select up to 4 image files]  
-
-**Response (201):**
-```json
-{
-    "_id": "638d2b3c9e8b9a0b1c8d4e6b",
-    "title": "Modern Villa in Mumbai",
-    "location": "Mumbai",
-    "price": 35000000,
-    "bhk": 5,
-    "type": "Villa",
-    "description": "A modern 5BHK villa with a private pool and stunning city views.",
-    "status": "sale",
-    "images": [
-        "http://localhost:5000/uploads/1670235123456-image1.jpg",
-        "http://localhost:5000/uploads/1670235123457-image2.jpg",
-        "http://localhost:5000/uploads/1670235123458-image3.jpg"
-    ],
-    "date": "2022-12-05T11:20:12.789Z",
-    "owner": "638d1f7a9e8b9a0b1c8d4e5f"
-}
-```
-
----
-
-### 5. Upload Images
-**Endpoint:** `POST /upload`  
-
-**Request:** (multipart/form-data)  
-- images: [select up to 4 image files]  
-
-**Response (200):**
-```json
-{
-    "msg": "Files uploaded successfully",
-    "images": [
-        "http://localhost:5000/uploads/1670234123456-image1.jpg",
-        "http://localhost:5000/uploads/1670234123457-image2.jpg",
-        "http://localhost:5000/uploads/1670234123458-image3.jpg"
-    ]
-}
-```
-
----
-
-### 6. Update Property Images
-**Endpoint:** `PUT /properties/:id/images`  
-
-**Request:**
-```json
-{
-    "images": [
-        "http://localhost:5000/uploads/1670234123456-image1.jpg",
-        "http://localhost:5000/uploads/1670234123457-image2.jpg",
-        "http://localhost:5000/uploads/1670234123458-image3.jpg"
-    ]
-}
-```
-
-**Response (200):**
-```json
-{
-    "msg": "Property images updated successfully",
-    "property": {
-        "_id": "638d2a1b9e8b9a0b1c8d4e6a",
-        "title": "Luxury Apartment in Gurgaon",
-        "location": "Gurgaon",
-        "price": 15000000,
-        "bhk": 3,
-        "type": "Apartment",
-        "description": "A luxurious 3BHK apartment in the heart of Gurgaon with modern amenities.",
-        "status": "sale",
-        "images": [
-            "http://localhost:5000/uploads/1670234123456-image1.jpg",
-            "http://localhost:5000/uploads/1670234123457-image2.jpg",
-            "http://localhost:5000/uploads/1670234123458-image3.jpg"
-        ],
-        "date": "2022-12-05T11:15:23.456Z",
-        "owner": "638d1f7a9e8b9a0b1c8d4e5f"
-    }
-}
-```
-
----
-
-### 7. Get All Properties
+### 1. Get All Properties
 **Endpoint:** `GET /properties?page=1&limit=5`  
 
 **Response (200):**
@@ -275,7 +89,7 @@ x-auth-token: <JWT_TOKEN>
 
 ---
 
-### 8. Get Property by ID
+### 2. Get Property by ID
 **Endpoint:** `GET /properties/:id`  
 
 **Response (200):**
@@ -305,7 +119,7 @@ x-auth-token: <JWT_TOKEN>
 
 ---
 
-### 9. Search Properties
+### 3. Search Properties
 **Endpoint:** `GET /search?bhk=3&location=Gurgaon`  
 
 **Response (200):**
@@ -337,7 +151,7 @@ x-auth-token: <JWT_TOKEN>
 
 ---
 
-### 10. Get Property Recommendations
+### 4. Get Property Recommendations
 **Endpoint:** `GET /recommendations/:id`  
 
 **Response (200):**
@@ -365,6 +179,191 @@ x-auth-token: <JWT_TOKEN>
     }
 ]
 ```
+
+### 5. User Registration
+**Endpoint:** `POST /auth/register`  
+
+**Request:**
+```json
+{
+    "name": "John Doe",
+    "email": "john@example.com",
+    "password": "password123"
+}
+```
+
+**Response (201):**
+```json
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+    "user": {
+        "id": "638d1f7a9e8b9a0b1c8d4e5f",
+        "name": "John Doe",
+        "email": "john@example.com",
+        "createdAt": "2022-12-05T10:30:18.123Z"
+    }
+}
+```
+
+---
+
+### 6. User Login
+**Endpoint:** `POST /auth/login`  
+
+**Request:**
+```json
+{
+    "email": "john@example.com",
+    "password": "password123"
+}
+```
+
+**Response (200):**
+```json
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+    "user": {
+        "id": "638d1f7a9e8b9a0b1c8d4e5f",
+        "name": "John Doe",
+        "email": "john@example.com",
+        "createdAt": "2022-12-05T10:30:18.123Z"
+    }
+}
+```
+
+---
+
+### 7. Create Property (Without Images)
+**Endpoint:** `POST /properties`  
+
+**Request:**
+```json
+{
+    "title": "Luxury Apartment in Gurgaon",
+    "location": "Gurgaon",
+    "price": 15000000,
+    "bhk": 3,
+    "type": "Apartment",
+    "description": "A luxurious 3BHK apartment in the heart of Gurgaon with modern amenities.",
+    "status": "sale",
+    "images": []
+}
+```
+
+**Response (201):**
+```json
+{
+    "_id": "638d2a1b9e8b9a0b1c8d4e6a",
+    "title": "Luxury Apartment in Gurgaon",
+    "location": "Gurgaon",
+    "price": 15000000,
+    "bhk": 3,
+    "type": "Apartment",
+    "description": "A luxurious 3BHK apartment in the heart of Gurgaon with modern amenities.",
+    "status": "sale",
+    "images": [],
+    "date": "2022-12-05T11:15:23.456Z",
+    "owner": "638d1f7a9e8b9a0b1c8d4e5f"
+}
+```
+
+---
+
+### 8. Create Property with Images (Single Request)
+**Endpoint:** `POST /properties-with-images`  
+
+**Request:** (multipart/form-data)  
+- title: "Modern Villa in Mumbai"  
+- location: "Mumbai"  
+- price: "35000000"  
+- bhk: "5"  
+- type: "Villa"  
+- description: "A modern 5BHK villa with a private pool and stunning city views."  
+- status: "sale"  
+- images: [select up to 4 image files]  
+
+**Response (201):**
+```json
+{
+    "_id": "638d2b3c9e8b9a0b1c8d4e6b",
+    "title": "Modern Villa in Mumbai",
+    "location": "Mumbai",
+    "price": 35000000,
+    "bhk": 5,
+    "type": "Villa",
+    "description": "A modern 5BHK villa with a private pool and stunning city views.",
+    "status": "sale",
+    "images": [
+        "http://localhost:5000/uploads/1670235123456-image1.jpg",
+        "http://localhost:5000/uploads/1670235123457-image2.jpg",
+        "http://localhost:5000/uploads/1670235123458-image3.jpg"
+    ],
+    "date": "2022-12-05T11:20:12.789Z",
+    "owner": "638d1f7a9e8b9a0b1c8d4e5f"
+}
+```
+
+---
+
+### 9. Upload Images
+**Endpoint:** `POST /upload`  
+
+**Request:** (multipart/form-data)  
+- images: [select up to 4 image files]  
+
+**Response (200):**
+```json
+{
+    "msg": "Files uploaded successfully",
+    "images": [
+        "http://localhost:5000/uploads/1670234123456-image1.jpg",
+        "http://localhost:5000/uploads/1670234123457-image2.jpg",
+        "http://localhost:5000/uploads/1670234123458-image3.jpg"
+    ]
+}
+```
+
+---
+
+### 10. Update Property Images
+**Endpoint:** `PUT /properties/:id/images`  
+
+**Request:**
+```json
+{
+    "images": [
+        "http://localhost:5000/uploads/1670234123456-image1.jpg",
+        "http://localhost:5000/uploads/1670234123457-image2.jpg",
+        "http://localhost:5000/uploads/1670234123458-image3.jpg"
+    ]
+}
+```
+
+**Response (200):**
+```json
+{
+    "msg": "Property images updated successfully",
+    "property": {
+        "_id": "638d2a1b9e8b9a0b1c8d4e6a",
+        "title": "Luxury Apartment in Gurgaon",
+        "location": "Gurgaon",
+        "price": 15000000,
+        "bhk": 3,
+        "type": "Apartment",
+        "description": "A luxurious 3BHK apartment in the heart of Gurgaon with modern amenities.",
+        "status": "sale",
+        "images": [
+            "http://localhost:5000/uploads/1670234123456-image1.jpg",
+            "http://localhost:5000/uploads/1670234123457-image2.jpg",
+            "http://localhost:5000/uploads/1670234123458-image3.jpg"
+        ],
+        "date": "2022-12-05T11:15:23.456Z",
+        "owner": "638d1f7a9e8b9a0b1c8d4e5f"
+    }
+}
+```
+
+---
 
 ---
 
