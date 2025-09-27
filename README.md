@@ -25,7 +25,7 @@ http://localhost:5000/api
 ```
 
 ## Installation
-1. Clone the repository  https://github.com/Shiakh0112/Wisdom-Peak-Analytics-Real-Estate-API-assignment
+1. Clone the repository:  `https://github.com/Shiakh0112/Wisdom-Peak-Analytics-Real-Estate-API-assignment`
 2. Install dependencies: `npm install`  
 3. Set up environment variables in a `.env` file  
 4. Start the server: `nodemon server.js`  
