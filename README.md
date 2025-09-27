@@ -7,13 +7,13 @@ The Property Management API is a RESTful service that allows users to manage pro
 
 ##Features
 ```
-User Authentication: Secure registration, login, and logout with JWT tokens
-Property Management: Full CRUD operations for properties
-Image Upload: Upload up to 4 images per property with local storage
-Advanced Search: Search properties with multiple filters (location, price, BHK, status, etc.)
-Recommendations: Get property recommendations based on similar properties
-Pagination: Efficient pagination for property listings
-Caching: In-memory caching for improved performance
+1. User Authentication: Secure registration, login, and logout with JWT tokens
+2. Property Management: Full CRUD operations for properties
+3. Image Upload: Upload up to 4 images per property with local storage
+4. Advanced Search: Search properties with multiple filters (location, price, BHK, status, etc.)
+5. Recommendations: Get property recommendations based on similar properties
+6. Pagination: Efficient pagination for property listings
+7. Caching: In-memory caching for improved performance
 
 ```
 
